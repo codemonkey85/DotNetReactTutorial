@@ -19,9 +19,29 @@ public static class ActivitiesApi
     private static async Task<IResult> GetActivity([FromServices] DataContext context, Guid id) =>
         Results.Ok(await context.Activities.FirstOrDefaultAsync(a => a.Id == id));
 
-    private static async Task<IResult> CreateActivity([FromServices] DataContext context, Activity activity) => throw new NotImplementedException();
+    private static async Task<IResult> CreateActivity([FromServices] DataContext context, Activity activity)
+    {
+        context.Add(activity);
+        await context.SaveChangesAsync();
+        return Results.Ok(activity);
+    }
 
-    private static async Task<IResult> UpdateActivity([FromServices] DataContext context, Activity activity) => throw new NotImplementedException();
+    private static async Task<IResult> UpdateActivity([FromServices] DataContext context, Activity activity)
+    {
+        context.Add(activity);
+        await context.SaveChangesAsync();
+        return Results.Ok(activity);
+    }
 
-    private static async Task DeleteActivity([FromServices] DataContext context, Guid id) => throw new NotImplementedException();
+    private static async Task<IResult> DeleteActivity([FromServices] DataContext context, Guid id)
+    {
+        var activity = await context.Activities.FirstOrDefaultAsync(a => a.Id == id);
+        if (activity is null)
+        {
+            return Results.NotFound();
+        }
+        context.Remove(activity);
+        await context.SaveChangesAsync();
+        return Results.Ok();
+    }
 }
