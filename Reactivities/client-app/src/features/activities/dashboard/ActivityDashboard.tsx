@@ -11,12 +11,12 @@ interface Props {
 export default function ActivityDashboard({ activities }: Props) {
   return (
     <>
-      <Container>
+      <Container fluid>
         <Row>
-          <Col>
+          <Col sm={8}>
             <ActivityList activities={activities} />
           </Col>
-          <Col>
+          <Col sm={4}>
             <ActivityDetails activity={activities[0]} />
           </Col>
         </Row>

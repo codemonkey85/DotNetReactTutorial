@@ -11,7 +11,7 @@ export default function ActivityList({ activities }: Props) {
     <>
       <ListGroup>
         {activities.map((activity) => (
-          <ListGroup.Item key={activity.id} action href={`#${activity.id}`}>
+          <ListGroup.Item key={activity.id} action /*href={`#${activity.id}`}*/>
             {activity?.title}
             <span>{activity?.date?.toString()}</span>
             <span>{activity?.description}</span>
