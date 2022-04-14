@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, SyntheticEvent, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Activity } from "../../../app/models/activity";
 
@@ -6,19 +6,21 @@ interface Props {
   activity: Activity | undefined;
   closeForm: () => void;
   createOrEdit: (activity: Activity) => void;
+  submitting: boolean;
 }
 
 export default function ActivityForm({
   activity: selectedActivity,
   closeForm,
   createOrEdit,
+  submitting,
 }: Props) {
   const initialState = selectedActivity ?? {
     id: "",
     title: "",
     description: "",
     category: "",
-    date: "",
+    date: new Date("1995-12-17"),
     city: "",
     venue: "",
   };
@@ -26,9 +28,9 @@ export default function ActivityForm({
   const [activity, setActivity] = useState(initialState);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    // event.preventDefault();
+    event.preventDefault();
     // console.log(activity);
-    // closeForm();
+    closeForm();
     createOrEdit(activity);
   }
 
@@ -70,9 +72,9 @@ export default function ActivityForm({
       </Form.Group>
       <Form.Group controlId="formDate">
         <Form.Control
-          type="text"
+          type="date"
           placeholder="Date"
-          value={activity.date}
+          value={activity.date?.toString()}
           name="date"
           onChange={handleInputChange}
         />
@@ -95,7 +97,12 @@ export default function ActivityForm({
           onChange={handleInputChange}
         />
       </Form.Group>
-      <Button variant="primary" type="submit" className="form-submit-button">
+      <Button
+        variant="primary"
+        type="submit"
+        className="form-submit-button"
+        disabled={submitting}
+      >
         Submit
       </Button>
       <Button

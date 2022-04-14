@@ -1,21 +1,32 @@
+import { SyntheticEvent, useState } from "react";
 import { Button, ListGroup } from "react-bootstrap";
 import { Activity } from "../../../app/models/activity";
 
 interface Props {
   activities: Activity[];
-  selectedActivity: Activity | undefined;
   selectActivity: (id: string) => void;
-  cancelSelectActivity: () => void;
   deleteActivity: (id: string) => void;
+  submitting: boolean;
 }
 
 export default function ActivityList({
   activities,
-  selectedActivity,
   selectActivity,
-  cancelSelectActivity,
   deleteActivity,
+  submitting,
 }: Props) {
+  const [target, setTarget] = useState("");
+
+  function handleActivityDelete(
+    event: SyntheticEvent<HTMLButtonElement>,
+    id: string
+  ) {
+    setTarget(event.currentTarget.name);
+    // if (confirm("Are you sure you want to delete this activity?")) {
+    deleteActivity(id);
+    // }
+  }
+
   return (
     <ListGroup>
       {activities
@@ -34,9 +45,11 @@ export default function ActivityList({
               View
             </Button>
             <Button
+              name={activity.id}
               variant="danger"
-              onClick={() => deleteActivity(activity.id)}
+              onClick={(event) => handleActivityDelete(event, activity.id)}
               className="view-button"
+              disabled={submitting && target === activity.id}
             >
               Delete
             </Button>
