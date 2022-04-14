@@ -2,6 +2,7 @@
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
 global using Reactivities.Api.Activities;
+global using Reactivities.Api.Extensions;
 global using Reactivities.Application.Activities;
 global using Reactivities.Application.Core;
 global using Reactivities.Domain;

@@ -1,16 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddCors(options => options.AddPolicy("AllowAnyOrigin", policy => policy.AllowAnyOrigin()
-                                                                                        .AllowAnyHeader()
-                                                                                        .AllowAnyMethod()));
-
-builder.Services.AddMediatR(typeof(ActivityList.Handler).Assembly);
-builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
-builder.Services.AddDbContext<DataContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite")));
-
+builder.ConfigureServices();
 var app = builder.Build();
 
 app.UseCors("AllowAnyOrigin");
