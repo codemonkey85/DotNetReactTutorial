@@ -13,18 +13,18 @@ public static class ActivitiesApi
         app.MapDelete($"{ApiUrl}/{{id}}", DeleteActivity).WithName(nameof(DeleteActivity)).WithDisplayName(nameof(DeleteActivity));
     }
 
-    private static async Task<IResult> GetActivities([FromServices] IMediator mediator) =>
-        Results.Ok(await mediator.Send(new ActivityList.Query()));
+    private static async Task<IResult> GetActivities([FromServices] IMediator mediator, CancellationToken cancellationToken) =>
+        Results.Ok(await mediator.Send(new ActivityList.Query(), cancellationToken));
 
-    private static async Task<IResult> GetActivity([FromServices] IMediator mediator, Guid id) =>
-        Results.Ok(await mediator.Send(new Details.Query(id)));
+    private static async Task<IResult> GetActivity([FromServices] IMediator mediator, Guid id, CancellationToken cancellationToken) =>
+        Results.Ok(await mediator.Send(new Details.Query(id), cancellationToken));
 
-    private static async Task<IResult> CreateActivity([FromServices] IMediator mediator, Activity activity) =>
-        Results.Ok(await mediator.Send(new Create.Command(activity)));
+    private static async Task<IResult> CreateActivity([FromServices] IMediator mediator, Activity activity, CancellationToken cancellationToken) =>
+        Results.Ok(await mediator.Send(new Create.Command(activity), cancellationToken));
 
-    private static async Task<IResult> UpdateActivity([FromServices] IMediator mediator, Activity activity) =>
-        Results.Ok(await mediator.Send(new Update.Command(activity)));
+    private static async Task<IResult> UpdateActivity([FromServices] IMediator mediator, Activity activity, CancellationToken cancellationToken) =>
+        Results.Ok(await mediator.Send(new Update.Command(activity), cancellationToken));
 
-    private static async Task<IResult> DeleteActivity([FromServices] IMediator mediator, Guid id) =>
-        Results.Ok(await mediator.Send(new Delete.Command(id)));
+    private static async Task<IResult> DeleteActivity([FromServices] IMediator mediator, Guid id, CancellationToken cancellationToken) =>
+        Results.Ok(await mediator.Send(new Delete.Command(id), cancellationToken));
 }
