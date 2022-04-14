@@ -1,4 +1,3 @@
-import React from "react";
 import { Button, Nav, Navbar } from "react-bootstrap";
 
 interface Props {
