@@ -11,7 +11,7 @@ builder.Services.AddDbContext<DataContext>(options => options.UseSqlite(builder.
 
 var app = builder.Build();
 
-app.UseCors();
+app.UseCors("AllowAnyOrigin");
 
 if (app.Environment.IsDevelopment())
 {
