@@ -13,12 +13,15 @@ public static class ActivitiesApi
         app.MapDelete($"{ApiUrl}/{{id}}", DeleteActivity).WithName(nameof(DeleteActivity)).WithDisplayName(nameof(DeleteActivity));
     }
 
+    [EnableCors("AllowAnyOrigin")]
     private static async Task<IResult> GetActivities([FromServices] DataContext context) =>
         Results.Ok(await context.Activities.ToArrayAsync());
 
+    [EnableCors("AllowAnyOrigin")]
     private static async Task<IResult> GetActivity([FromServices] DataContext context, Guid id) =>
         Results.Ok(await context.Activities.FirstOrDefaultAsync(a => a.Id == id));
 
+    [EnableCors("AllowAnyOrigin")]
     private static async Task<IResult> CreateActivity([FromServices] DataContext context, Activity activity)
     {
         context.Add(activity);
@@ -26,6 +29,7 @@ public static class ActivitiesApi
         return Results.Ok(activity);
     }
 
+    [EnableCors("AllowAnyOrigin")]
     private static async Task<IResult> UpdateActivity([FromServices] DataContext context, Activity activity)
     {
         context.Add(activity);
@@ -33,6 +37,7 @@ public static class ActivitiesApi
         return Results.Ok(activity);
     }
 
+    [EnableCors("AllowAnyOrigin")]
     private static async Task<IResult> DeleteActivity([FromServices] DataContext context, Guid id)
     {
         var activity = await context.Activities.FirstOrDefaultAsync(a => a.Id == id);
