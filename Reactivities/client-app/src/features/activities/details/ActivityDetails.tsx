@@ -4,22 +4,35 @@ import { Activity } from "../../../app/models/activity";
 
 interface Props {
   activity: Activity;
+  cancelSelectActivity: () => void;
+  openForm: (id: string) => void;
 }
 
-export default function ActivityDetails({ activity }: Props) {
+export default function ActivityDetails({
+  activity,
+  cancelSelectActivity,
+  openForm,
+}: Props) {
   return (
     <>
       <Card>
-        <Card.Img
-          variant="top"
-          src={`./assets/categoryImages/${activity?.category}.jpg`}
-          className="category-image"
-        />
+        {activity.category && (
+          <Card.Img
+            variant="top"
+            src={`./assets/categoryImages/${activity.category}.jpg`}
+          />
+        )}
+        <Card.Header>
+          <h3>{activity.title}</h3>
+        </Card.Header>
         <Card.Body>
-          <Card.Title>{activity?.title}</Card.Title>
-          <Card.Text>{activity?.description}</Card.Text>
-          <Button variant="primary">Edit</Button>
-          <Button variant="secondary">Cancel</Button>
+          <Card.Text>{activity.description}</Card.Text>
+          <Button onClick={() => openForm(activity.id)} variant="primary">
+            Edit
+          </Button>
+          <Button onClick={cancelSelectActivity} variant="secondary">
+            Cancel
+          </Button>
         </Card.Body>
       </Card>
     </>

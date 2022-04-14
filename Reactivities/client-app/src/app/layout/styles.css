@@ -33,6 +33,8 @@ menu {
   float: right;
 }
 
-.category-image {
-  width: 10%;
+.form-submit-button {
+  float: right;
 }
+
+.form-cancel-button {}

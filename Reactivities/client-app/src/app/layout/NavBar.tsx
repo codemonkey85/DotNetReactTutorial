@@ -1,7 +1,11 @@
 import React from "react";
 import { Button, Nav, Navbar } from "react-bootstrap";
 
-export default function NavBar() {
+interface Props {
+  openForm: () => void;
+}
+
+export default function NavBar({ openForm }: Props) {
   return (
     <>
       <Navbar sticky="top" variant="dark" className="top-navbar">
@@ -10,8 +14,12 @@ export default function NavBar() {
           Reactivities
         </Navbar.Brand>
         <Nav>
-          <Nav.Link href="#">Activities</Nav.Link>
-          <Button>Create Activity</Button>
+          <Nav.Item>
+            <Nav.Link href="#">Activities</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Button onClick={openForm}>Create Activity</Button>
+          </Nav.Item>
         </Nav>
       </Navbar>
     </>
