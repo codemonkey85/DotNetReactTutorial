@@ -18,24 +18,13 @@ public class Update
                 return Unit.Value;
             }
 
-            (
-                activity.Id,
-                activity.Title,
-                activity.Date,
-                activity.Description,
-                activity.Category,
-                activity.City,
-                activity.Venue
-            ) =
-            (
-                request.Activity.Id,
-                request.Activity.Title,
-                request.Activity.Date,
-                request.Activity.Description,
-                request.Activity.Category,
-                request.Activity.City,
-                request.Activity.Venue
-            );
+            activity.Id = request.Activity.Id;
+            activity.Title = request.Activity.Title; // ?? activity.Title;
+            activity.Date = request.Activity.Date; // ?? activity.Date;
+            activity.Description = request.Activity.Description; // ?? activity.Description;
+            activity.Category = request.Activity.Category; // ?? activity.Category;
+            activity.City = request.Activity.City; // ?? activity.City;
+            activity.Venue = request.Activity.Venue; // ?? activity.Venue;
 
             await Context.SaveChangesAsync(cancellationToken);
             return Unit.Value;
