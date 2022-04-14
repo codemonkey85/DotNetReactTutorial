@@ -6,11 +6,11 @@ public static class ActivitiesApi
 
     public static void MapActivitiesApi(this IEndpointRouteBuilder app)
     {
-        app.MapGet(ApiUrl, GetActivities).WithName(nameof(GetActivities)).WithDisplayName(nameof(GetActivities));
-        app.MapGet($"{ApiUrl}/{{id}}", GetActivity).WithName(nameof(GetActivity)).WithDisplayName(nameof(GetActivity));
-        app.MapPost(ApiUrl, CreateActivity).WithName(nameof(CreateActivity)).WithDisplayName(nameof(CreateActivity));
-        app.MapPut(ApiUrl, UpdateActivity).WithName(nameof(UpdateActivity)).WithDisplayName(nameof(UpdateActivity));
-        app.MapDelete($"{ApiUrl}/{{id}}", DeleteActivity).WithName(nameof(DeleteActivity)).WithDisplayName(nameof(DeleteActivity));
+        app.MapGet(ApiUrl, GetActivities);
+        app.MapGet($"{ApiUrl}/{{id}}", GetActivity);
+        app.MapPost(ApiUrl, CreateActivity);
+        app.MapPut(ApiUrl, UpdateActivity);
+        app.MapDelete($"{ApiUrl}/{{id}}", DeleteActivity);
     }
 
     private static async Task<IResult> GetActivities([FromServices] IMediator mediator, CancellationToken cancellationToken) =>

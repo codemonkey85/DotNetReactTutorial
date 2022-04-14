@@ -3,7 +3,7 @@ public class Update
 {
     public record Command(Activity? Activity) : IRequest;
 
-    public record Handler(DataContext Context/*, IMapper Mapper*/) : IRequestHandler<Command>
+    public record Handler(DataContext Context) : IRequestHandler<Command>
     {
         public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
         {
@@ -17,14 +17,6 @@ public class Update
             {
                 return Unit.Value;
             }
-
-            //Mapper.Map(request.Activity, activity.Id);
-            //Mapper.Map(request.Activity, activity.Title);
-            //Mapper.Map(request.Activity, activity.Date);
-            //Mapper.Map(request.Activity, activity.Description);
-            //Mapper.Map(request.Activity, activity.Category);
-            //Mapper.Map(request.Activity, activity.City);
-            //Mapper.Map(request.Activity, activity.Venue);
 
             (
                 activity.Id,
