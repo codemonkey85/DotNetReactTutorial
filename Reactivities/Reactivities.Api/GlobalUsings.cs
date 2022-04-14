@@ -1,7 +1,9 @@
-﻿global using Microsoft.AspNetCore.Cors;
+﻿global using MediatR;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
 global using Reactivities.Api.Activities;
+global using Reactivities.Application.Activities;
+global using Reactivities.Application.Core;
 global using Reactivities.Domain;
 global using Reactivities.Persistence;
 global using System.Diagnostics.CodeAnalysis;

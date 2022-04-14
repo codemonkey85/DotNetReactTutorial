@@ -13,35 +13,18 @@ public static class ActivitiesApi
         app.MapDelete($"{ApiUrl}/{{id}}", DeleteActivity).WithName(nameof(DeleteActivity)).WithDisplayName(nameof(DeleteActivity));
     }
 
-    private static async Task<IResult> GetActivities([FromServices] DataContext context) =>
-        Results.Ok(await context.Activities.OrderBy(a => a.Date).ToArrayAsync());
+    private static async Task<IResult> GetActivities([FromServices] IMediator mediator) =>
+        Results.Ok(await mediator.Send(new ActivityList.Query()));
 
-    private static async Task<IResult> GetActivity([FromServices] DataContext context, Guid id) =>
-        Results.Ok(await context.Activities.FirstOrDefaultAsync(a => a.Id == id));
+    private static async Task<IResult> GetActivity([FromServices] IMediator mediator, Guid id) =>
+        Results.Ok(await mediator.Send(new Details.Query(id)));
 
-    private static async Task<IResult> CreateActivity([FromServices] DataContext context, Activity activity)
-    {
-        context.Add(activity);
-        await context.SaveChangesAsync();
-        return Results.Ok(activity);
-    }
+    private static async Task<IResult> CreateActivity([FromServices] IMediator mediator, Activity activity) =>
+        Results.Ok(await mediator.Send(new Create.Command(activity)));
 
-    private static async Task<IResult> UpdateActivity([FromServices] DataContext context, Activity activity)
-    {
-        context.Add(activity);
-        await context.SaveChangesAsync();
-        return Results.Ok(activity);
-    }
+    private static async Task<IResult> UpdateActivity([FromServices] IMediator mediator, Activity activity) =>
+        Results.Ok(await mediator.Send(new Update.Command(activity)));
 
-    private static async Task<IResult> DeleteActivity([FromServices] DataContext context, Guid id)
-    {
-        var activity = await context.Activities.FirstOrDefaultAsync(a => a.Id == id);
-        if (activity is null)
-        {
-            return Results.NotFound();
-        }
-        context.Remove(activity);
-        await context.SaveChangesAsync();
-        return Results.Ok();
-    }
+    private static async Task<IResult> DeleteActivity([FromServices] IMediator mediator, Guid id) =>
+        Results.Ok(await mediator.Send(new Delete.Command(id)));
 }
