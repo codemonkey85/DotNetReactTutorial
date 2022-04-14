@@ -1,9 +1,9 @@
 ﻿namespace Reactivities.Application.Activities;
 public class Update
 {
-    public record class Command(Activity? Activity) : IRequest;
+    public record Command(Activity? Activity) : IRequest;
 
-    public record class Handler(DataContext Context/*, IMapper Mapper*/) : IRequestHandler<Command>
+    public record Handler(DataContext Context/*, IMapper Mapper*/) : IRequestHandler<Command>
     {
         public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
         {

@@ -2,9 +2,9 @@
 
 public class Create
 {
-    public record class Command(Activity? Activity) : IRequest;
+    public record Command(Activity? Activity) : IRequest;
 
-    public record class Handler(DataContext Context) : IRequestHandler<Command>
+    public record Handler(DataContext Context) : IRequestHandler<Command>
     {
         public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
         {
