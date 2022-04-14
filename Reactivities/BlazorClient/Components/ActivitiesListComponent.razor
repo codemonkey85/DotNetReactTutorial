@@ -1,0 +1,9 @@
+﻿@if (activities.Any())
+{
+    <ul>
+    @foreach (var activity in activities)
+    {
+        <ActivityComponent Activity=activity />
+    }
+    </ul>
+}

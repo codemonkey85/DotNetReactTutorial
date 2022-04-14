@@ -3,18 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reactivities.Api", "Reactivities.Api\Reactivities.Api.csproj", "{8C009CBE-0D31-4B9F-A2DE-A0039FB54426}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reactivities.Api", "Reactivities.Api\Reactivities.Api.csproj", "{8C009CBE-0D31-4B9F-A2DE-A0039FB54426}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B5262177-B3C7-4BFC-AFEF-72C6792D29C8}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reactivities.Application", "Reactivities.Application\Reactivities.Application.csproj", "{B45778E0-C859-4E96-A843-39E337E34CA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reactivities.Application", "Reactivities.Application\Reactivities.Application.csproj", "{B45778E0-C859-4E96-A843-39E337E34CA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reactivities.Domain", "Reactivities.Domain\Reactivities.Domain.csproj", "{90B2C950-3BEB-43FC-852A-8F07145FB3BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reactivities.Domain", "Reactivities.Domain\Reactivities.Domain.csproj", "{90B2C950-3BEB-43FC-852A-8F07145FB3BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reactivities.Persistence", "Reactivities.Persistence\Reactivities.Persistence.csproj", "{8900DC7B-CD08-49CD-8C58-F7BA01F9DED9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reactivities.Persistence", "Reactivities.Persistence\Reactivities.Persistence.csproj", "{8900DC7B-CD08-49CD-8C58-F7BA01F9DED9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorClient", "BlazorClient\BlazorClient.csproj", "{A25E485E-3C45-4E65-973C-8F87DD534873}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{8900DC7B-CD08-49CD-8C58-F7BA01F9DED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8900DC7B-CD08-49CD-8C58-F7BA01F9DED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8900DC7B-CD08-49CD-8C58-F7BA01F9DED9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A25E485E-3C45-4E65-973C-8F87DD534873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A25E485E-3C45-4E65-973C-8F87DD534873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A25E485E-3C45-4E65-973C-8F87DD534873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A25E485E-3C45-4E65-973C-8F87DD534873}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
